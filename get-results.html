@@ -106,13 +106,7 @@
     &copy; 2025 National Institute of Open Schooling. All rights reserved.
   </footer>
 
-  <script type="module">
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-    const supabaseUrl = 'https://hwibpuhxsiaadyuissoc.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3aWJwdWh4c2lhYWR5dWlzc29jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQwNTgzNTYsImV4cCI6MjA2OTYzNDM1Nn0.eA0aUuFwxvm4MrdC4l-kSeCsmO3b6Z3qdXUKvXog87U';
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
+  <script>
     const form = document.getElementById('resultForm');
     const errorDiv = document.getElementById('error');
     const pdfViewer = document.getElementById('pdfViewer');
@@ -129,21 +123,19 @@
         return;
       }
 
+      const publicUrl = `https://hwibpuhxsiaadyuissoc.supabase.co/storage/v1/object/public/results/${enrollment}.pdf`;
+
+      // Optional: check if file exists before showing
       try {
-        const { data, error } = await supabase
-          .storage
-          .from('results')
-          .createSignedUrl(`${enrollment}.pdf`, 60);
-
-        if (error || !data?.signedUrl) {
+        const response = await fetch(publicUrl, { method: 'HEAD' });
+        if (response.ok) {
+          pdfViewer.innerHTML = `<iframe src="${publicUrl}"></iframe>`;
+        } else {
           errorDiv.textContent = 'Result not found. Please check your Enrollment No.';
-          return;
         }
-
-        pdfViewer.innerHTML = `<iframe src="${data.signedUrl}"></iframe>`;
       } catch (err) {
         console.error(err);
-        errorDiv.textContent = 'An unexpected error occurred. Please try again.';
+        errorDiv.textContent = 'Could not load result. Please try again.';
       }
     });
   </script>
