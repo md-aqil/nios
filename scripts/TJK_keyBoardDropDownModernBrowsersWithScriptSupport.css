@@ -1,0 +1,20 @@
+/****
+TJK_keyBoardDropDown
+Pure CSS Drop Down Menu [TJK_keyBoardDropDown] v1.2
+Copyright 2006, Thierry Koblentz - TJKDesign.com - All rights reserved.
+Read www.TJKDesign.com/articles/Pure_CSS_dropdown_Menu.asp
+****/
+
+/* IF JS IS ON we need to reset the rules that let keyboard users access the sub-menu on the page */
+.AB #TJK_dropDownMenu li#AB ul li a:focus,
+.AB #TJK_dropDownMenu li#AB ul li a:active,
+.CF #TJK_dropDownMenu li#CF ul li a:focus,
+.CF #TJK_dropDownMenu li#CF ul li a:active,
+.GJ #TJK_dropDownMenu li#GJ ul li a:focus,
+.GJ #TJK_dropDownMenu li#GJ ul li a:active,
+.KR #TJK_dropDownMenu li#KR ul li a:focus,
+.KR #TJK_dropDownMenu li#KR ul li a:active,
+.ST #TJK_dropDownMenu li#ST ul li a:focus,
+.ST #TJK_dropDownMenu li#ST ul li a:active,
+.UZ #TJK_dropDownMenu li#UZ ul li a:focus,
+.UZ #TJK_dropDownMenu li#UZ ul li a:active {position:relative !important;top:0 !important;}
