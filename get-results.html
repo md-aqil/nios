@@ -57,6 +57,7 @@
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
+      border: 1px solid #002b55;
     }
 
     button:hover {
@@ -86,17 +87,24 @@
 <body>
 
   <div class="header">
+    
     National Institute of Open Schooling (NIOS)
   </div>
 
   <div class="container">
+    <div class="mainHead__wrapper-logo" style="text-align: center;">
+                            <a href="index.html">
+                                <img src="https://results.nios.ac.in/static/dist/images/logo.png" alt="National Institute of Open Learning" class="img-responsive">
+                            </a>
+                        </div>
     <h2>Check Your Examination Result</h2>
     <form id="resultForm">
       <label for="enrollment">Enter Your 12 digit Enrollment No.</label>
       <input type="text" id="enrollment" name="enrollment" maxlength="12" pattern="\d{12}" required placeholder="e.g., 123456789012">
       <div id="error"></div>
-      <button type="reset">Reset</button>
-      <button type="submit">Submit</button>
+        <button type="submit">Submit</button>
+      <button type="reset" style="background: #fff; color: #002b55; ">Reset</button>
+    
     </form>
 
     <div id="pdfViewer"></div>
